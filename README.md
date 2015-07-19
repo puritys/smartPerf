@@ -1,14 +1,25 @@
+Smart Performance library
+
+* C/C++ Example
+
 <pre>
+#include "smartPerf.h"
+int main () {
     smartPerf::start("test long long key name1");
     run  xxxx
     clock_t timeDiff = smartPerf::end(false);
 
     smartPerf::print();
-    
----------------------------------------------------------
-|            Key            |          CPU Time         |
-|-------------------------------------------------------|
-|  test long long key name1 |           200 ms          |
-|           test2           |           20 ms           |
----------------------------------------------------------
+}
+</pre>
+
+The sample result: 
+
+<pre> 
++---------------------------------------------+
+|          Key         |       CPU Time       |
++---------------------------------------------+
+|  Complicated Process |         20 ms        |
+|    Simple Process    |        200 ms        |
++---------------------------------------------+
 </pre>
