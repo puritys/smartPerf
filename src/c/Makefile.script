@@ -1,0 +1,7 @@
+
+c:
+	g++ -shared -fPIC smartPerf.cc  -o smartPerf.so
+
+gyp:
+	node-gyp configure
+	node-gyp build -release

@@ -1,0 +1,26 @@
+SUBDIRS =.
+lib_LIBRARIES=smartPerf.a
+
+NAME=smartPerf
+CXXFILE=smartPerf.cc
+
+CFLAGS=
+LIBS=
+CC = cc -lstdc++
+CXX = g++
+
+.PHONY: all clean install distclean test
+
+all: $(NAME).so
+
+clean:
+	find . -name \*.lo -o -name \*.o | xargs rm -f
+	find . -name \*.la -o -name \*.a | xargs rm -f 
+	find . -name \*.so | xargs rm -f
+
+$(NAME).so: $(NAME).o
+	$(CXX)  -shared $(LIBS)  $(CFLAGS)  -o $@ $(NAME).o
+ 
+%.o: %.cc
+	$(LIBTOOL) --mode=compile $(CXX) -shared -fPIC $(CFLAGS) $(LIBS) -c $<  -o $@ 
+
