@@ -1,7 +1,7 @@
 #include "smartPerf.h"
 
 std::map<std::string, clock_t> smartPerf::timeData;
-std::map<std::string, clock_t> smartPerf::recordData;
+std::vector<std::pair<std::string, clock_t>> smartPerf::recordData;
 char* smartPerf::lastItemName = (char*)malloc(sizeof(char) * 51);
 
 void smartPerf::clear() {/*{{{*/
@@ -63,16 +63,16 @@ clock_t smartPerf::end(bool displayResult) {/*{{{*/
         printf("%s: Time diff = %lu ms\n", key, diffMs);
     }
     std::pair<std::string, clock_t> p(key, diffMs);
-    recordData.insert(p);
+    recordData.push_back(p);
     free(key);
     return diffMs;
 }/*}}}*/
 
 void smartPerf::print() {
-    std::map<std::string, clock_t>::iterator it;
+    std::vector<std::pair<std::string, clock_t>>::iterator it;
     int maxKeyLength = 1, maxWidth = 10, fieldNum = 2;
 
-    for(it = recordData.begin(); it != recordData.end(); ++it) {
+    for(it = recordData.begin(); it != recordData.end(); it++) {
         if ((int)it->first.size() > maxKeyLength) maxKeyLength = it->first.size();
     }
     if (maxKeyLength > 10) maxWidth = maxKeyLength + 2;
@@ -122,7 +122,7 @@ void smartPerf::print() {
 }
 
 
-void smartPerf::printByWidth(char* str, int maxWidth) {
+void smartPerf::printByWidth(char* str, int maxWidth) {/*{{{*/
     int length, left, right, i;
     length = strlen(str) - 1;
     length = maxWidth - length;
@@ -136,6 +136,6 @@ void smartPerf::printByWidth(char* str, int maxWidth) {
         for(i = 0; i < right; i++ ) printf(" ")
 ;
     }
-}
+}/*}}}*/
 
 

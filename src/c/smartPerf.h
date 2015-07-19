@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <map>
+#include <vector>
 
 #define CHAR( text ) ((char*)std::string( text ).c_str())
 
@@ -22,7 +23,7 @@ class smartPerf {
         static void printByWidth(char* str, int maxWidth);
 
         static std::map<std::string, clock_t> timeData;
-        static std::map<std::string, clock_t> recordData;
+        static std::vector<std::pair<std::string, clock_t> > recordData;
         static char *lastItemName;
 };
 
