@@ -76,8 +76,9 @@ void smartPerf::print() {
     }
     if (maxKeyLength > 10) maxWidth = maxKeyLength + 2;
 
+    printf("+");
     for (int i = 0 ; i < maxWidth*2; i++)  printf("-");
-    printf("-----\n");
+    printf("---+\n");
 
     
     printf("|");
@@ -86,9 +87,9 @@ void smartPerf::print() {
     printByWidth(CHAR("CPU Time"), maxWidth);
     printf("|\n");
 
-    printf("|");
+    printf("+");
     for (int i = 0 ; i < maxWidth*2; i++)  printf("-");
-    printf("---|\n");
+    printf("---+\n");
 
 
 
@@ -105,8 +106,9 @@ void smartPerf::print() {
         //printf("| %s |%lu | \n", it->first.c_str(), it->second);
     }
 
+    printf("+");
     for (int i = 0 ; i < maxWidth*2; i++)  printf("-");
-    printf("-----\n");
+    printf("---+\n");
 
 
 }

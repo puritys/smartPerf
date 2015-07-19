@@ -31,7 +31,7 @@ void go2() { // 100ms
 
 }
 TEST(simple, success) {/*{{{*/
-    smartPerf::start("test long long key name1");
+    smartPerf::start("Simple Process");
     go2();
     clock_t timeDiff = smartPerf::end();
     if (timeDiff > 0)
@@ -40,7 +40,7 @@ TEST(simple, success) {/*{{{*/
         ASSERT_TRUE(false);
 
     smartPerf::clear();
-    smartPerf::start("test2");
+    smartPerf::start("Complicated Process");
     go1();
     clock_t timeDiff2 = smartPerf::end();
     if (timeDiff2 > 0)
