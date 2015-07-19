@@ -5,3 +5,7 @@ c:
 gyp:
 	node-gyp configure
 	node-gyp build -release
+	sudo cp  build/Release/smartPerf.so /usr/local/lib/libsmartPerf.so
+	sudo cp smartPerf.h /usr/local/include/ 
+
+ 

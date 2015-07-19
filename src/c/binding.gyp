@@ -5,7 +5,7 @@
       "sources": [ 
           "smartPerf.cc"
       ],
-      "cflags_cc": ["-fexceptions"],
+      "cflags_cc": ["-fexceptions", "-Wsign-compare", "-Wwrite-strings"],
       "type": "shared_library",
       "conditions": [
         ['OS=="linux"', {
