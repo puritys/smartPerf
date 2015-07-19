@@ -5,10 +5,14 @@ Smart Performance library
 <pre>
 #include "smartPerf.h"
 int main () {
-    smartPerf::start("test long long key name1");
-    run  xxxx
+    smartPerf::start("Complicated Process");
+    run_function1();
     clock_t timeDiff = smartPerf::end(false);
 
+    smartPerf::start("Simple Process");
+    run_function2();
+    clock_t timeDiff = smartPerf::end(false);
+    
     smartPerf::print();
 }
 </pre>
