@@ -33,7 +33,7 @@ void smartPerf::start(const char *name) {/*{{{*/
 clock_t smartPerf::end(bool displayResult) {/*{{{*/
 
     clock_t end = clock();
-    clock_t start, diffMs;
+    clock_t start, diffMs, diffUs;
     char* key = (char*) malloc(sizeof(key) * 51);
     memset(key, '\0', 51);
     char defaultKey[8] = "default";
@@ -57,11 +57,13 @@ clock_t smartPerf::end(bool displayResult) {/*{{{*/
 
     start = it->second;
 
-    diffMs = (end - start) / 1000;
+    diffUs = (end - start);
+    diffMs = diffUs / 1000;
+    
     if (displayResult == true) {
-        printf("%s: Time diff = %lu ms \n", key, diffMs);
+        printf("%s: Time diff = %lu ms %lu us\n", key, diffMs, diffUs);
     }
-    std::pair<std::string, clock_t> p(key, diffMs);
+    std::pair<std::string, clock_t> p(key, diffUs);
     recordData.insert(p);
     free(key);
     return diffMs;
@@ -76,20 +78,24 @@ void smartPerf::print() {
     }
     if (maxKeyLength > 10) maxWidth = maxKeyLength + 2;
 
-    printf("+");
-    for (int i = 0 ; i < maxWidth*2; i++)  printf("-");
-    printf("---+\n");
-
+    // generate border
+    char *border = (char*) malloc(sizeof(char) * (maxWidth*3 + 10));
+    border[0] = '+';
+    for (int i = 0 ; i < maxWidth*3 + 5; i++)  border[i+1] = '-';
+    border[maxWidth*3 + 6] = '+';
+    border[maxWidth*3 + 7] = '\n';
+    border[maxWidth*3 + 8] = '\0';
+    printf("%s", border);
     
     printf("|");
     printByWidth(CHAR("Key"), maxWidth);
     printf("|");
-    printByWidth(CHAR("CPU Time"), maxWidth);
+    printByWidth(CHAR("CPU(ms)"), maxWidth);
+    printf("|");
+    printByWidth(CHAR("CPU(us)"), maxWidth);
     printf("|\n");
 
-    printf("+");
-    for (int i = 0 ; i < maxWidth*2; i++)  printf("-");
-    printf("---+\n");
+    printf("%s", border);
 
 
 
@@ -99,16 +105,17 @@ void smartPerf::print() {
         printf("|");
         printByWidth((char*)it->first.c_str(), maxWidth);
         printf("|");
-        sprintf(buffer, "%lu ms", it->second);
-
+        sprintf(buffer, "%lu ms", it->second/1000);
+        printByWidth(buffer, maxWidth);
+        printf("|");
+        sprintf(buffer, "%lu us", it->second);
         printByWidth(buffer, maxWidth);
         printf("|\n");
         //printf("| %s |%lu | \n", it->first.c_str(), it->second);
     }
 
-    printf("+");
-    for (int i = 0 ; i < maxWidth*2; i++)  printf("-");
-    printf("---+\n");
+    printf("%s", border);
+
 
 
 }
