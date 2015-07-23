@@ -39,6 +39,6 @@ exports.print = function () {
 
 exports.clear = function () {
     timeData = {};
-    recodrData = [];
+    recordData = [];
 }
 
