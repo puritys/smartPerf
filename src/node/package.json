@@ -1,0 +1,25 @@
+{
+  "name": "smart-perf",
+  "version": "1.0.0",
+  "description": "A performace test library",
+  "main": "smartPerf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:puritys/smartPerf.git"
+  },
+  "homepage": "https://github.com/puritys/smartPerf",
+  "keywords": [
+    "performace",
+    "test",
+    "node"
+  ],
+  "contributors": "puritys.chen@outlook.com",
+  "author": "puritys",
+  "license": "MIT",
+  "dependencies": {
+    "easy-table": "^1.0.0"
+  }
+}
