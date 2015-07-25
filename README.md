@@ -28,6 +28,8 @@ The sample result:
 +---------------------------------------------+
 </pre>
 
+<a href="https://www.npmjs.com/package/smart-perf" target="_blank">NPM smart-perf</a>
+
 * Node Example
 * npm install -g smart-perf
 
