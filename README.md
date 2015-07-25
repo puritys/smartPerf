@@ -1,6 +1,7 @@
 Smart Performance library
 
-* C/C++ Example
+C/C++ Example
+----------------
 
 <pre>
 #include "smartPerf.h"
@@ -28,9 +29,12 @@ The sample result:
 +---------------------------------------------+
 </pre>
 
+Node Example
+----------------
 <a href="https://www.npmjs.com/package/smart-perf" target="_blank">NPM smart-perf</a>
 
-* Node Example
+
+ 
 * npm install -g smart-perf
 
 <pre>
