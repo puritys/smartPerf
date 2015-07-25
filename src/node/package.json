@@ -1,10 +1,11 @@
 {
   "name": "smart-perf",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A performace test library",
   "main": "smartPerf.js",
   "files": [
     "smartPerf.js",
+    "README.md",
     "package.json"
   ],
   "scripts": {
