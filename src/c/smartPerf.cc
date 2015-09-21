@@ -1,13 +1,18 @@
 #include "smartPerf.h"
 
 std::map<std::string, clock_t> smartPerf::timeData;
-std::vector<std::pair<std::string, clock_t>> smartPerf::recordData;
+std::vector<std::pair<std::string, clock_t> > smartPerf::recordData;
 char* smartPerf::lastItemName = (char*)malloc(sizeof(char) * 51);
 
 void smartPerf::clear() {/*{{{*/
     while (!timeData.empty()) {
         timeData.erase(timeData.begin());
     }
+    while (!recordData.empty()) {
+        recordData.erase(recordData.begin());
+    }
+    bzero(lastItemName, 51);
+
 }/*}}}*/
 
 void smartPerf::start(const char *name) {/*{{{*/
@@ -69,7 +74,7 @@ clock_t smartPerf::end(bool displayResult) {/*{{{*/
 }/*}}}*/
 
 void smartPerf::print() {
-    std::vector<std::pair<std::string, clock_t>>::iterator it;
+    std::vector<std::pair<std::string, clock_t> >::iterator it;
     int maxKeyLength = 1, maxWidth = 10, fieldNum = 2;
 
     for(it = recordData.begin(); it != recordData.end(); it++) {
