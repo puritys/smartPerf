@@ -63,7 +63,7 @@ Binary search  129 ms
 PHP Example
 -----------
 <pre>
-<?php
+
 require "smartPerf.php";
 
 smartPerf::start("Linear search");
