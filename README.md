@@ -58,3 +58,34 @@ Key            CPU(ms)
 Linear search  207 ms
 Binary search  129 ms
 </pre>
+
+
+PHP Example
+-----------
+<pre>
+<?php
+require "smartPerf.php";
+
+smartPerf::start("Linear search");
+run_linear_search();
+smartPerf::end();
+
+smartPerf::start("Binary search");
+run_binary_search();
+smartPerf::end();
+
+smartPerf::printRecord();
+
+</pre>
+
+The sample result:
+
+<pre>
++-----------------------------------+
+|       Key       |     CPU(ms)     |
++-----------------------------------+
+|  Linear search  |       500       |
+|  Binary search  |       301       |
++-----------------------------------+
+</pre>
+
